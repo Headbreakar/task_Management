@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CreateTask from "../modals/createTask";
+// import Card from "./components/card";
+import Card from "./card";
 
 const TaskAdder = () => {
   const [modal, setModal] = useState(false);
   const [taskList, setTaskList] = useState([]);
 
+  useEffect(() => {
+    let arr = localStorage.getItem("taskList");
+    if (arr) {
+      let jsonObj = JSON.parse(arr);
+      setTaskList(jsonObj);
+    }
+  }, []);
   const toggle = () => setModal(!modal);
 
   const saveTask = (taskObj) => {
     let tempList = taskList;
     tempList.push(taskObj);
+    localStorage.setItem("taskList", JSON.stringify(tempList));
     setTaskList(tempList);
     setModal(false);
   };
@@ -36,9 +46,10 @@ const TaskAdder = () => {
         </button>
       </div>
       <div className="task-container">
-        {taskList.map((obj) => (
-          <li>{obj.Name}</li>
-        ))}
+        {taskList &&
+          taskList.map((obj, index) => (
+            <Card taskObj={{ obj }} index={index} />
+          ))}
       </div>
       <CreateTask toggle={toggle} modal={modal} save={saveTask} />
     </>
