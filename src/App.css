@@ -4,6 +4,63 @@ body {
 .header {
   height: 200px;
   width: 100%;
-  padding-top: 5%;
+  padding-top: 3%;
   background: #e9eef6;
+}
+.btns {
+  --color: #ab78ee;
+  --color2: rgb(10, 25, 30);
+  padding: 0.8em 1.75em;
+  background-color: transparent;
+  border-radius: 6px;
+  border: 0.3px solid var(--color);
+  transition: 0.5s;
+  position: relative;
+  height: 50px;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+  font-weight: 300;
+  font-size: 17px;
+  font-family: "Roboto", "Segoe UI", sans-serif;
+  text-transform: uppercase;
+  color: var(--color);
+}
+
+.btns::after,
+.btns::before {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: skew(90deg) translate(-50%, -50%);
+  position: absolute;
+  inset: 50%;
+  left: 25%;
+  z-index: -1;
+  transition: 0.5s ease-out;
+  background-color: var(--color);
+}
+
+.btns::before {
+  top: -50%;
+  left: -25%;
+  transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.btns:hover::before {
+  transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.btns:hover::after {
+  transform: skew(45deg) translate(-50%, -50%);
+}
+
+.btns:hover {
+  color: var(--color2);
+}
+
+.btns:active {
+  filter: brightness(0.7);
+  transform: scale(0.98);
 }

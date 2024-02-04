@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import TaskAdder from "./components/taskAdder";
 import "bootstrap/dist/css/bootstrap.min.css";
