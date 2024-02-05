@@ -10,6 +10,7 @@ body {
 .btns {
   --color: #ab78ee;
   --color2: rgb(10, 25, 30);
+
   padding: 0.8em 1.75em;
   background-color: transparent;
   border-radius: 6px;
@@ -71,11 +72,13 @@ body {
 }
 
 .card-wrapper {
-  width: 270px;
+  width: calc(25% - 20px);
   height: 200px;
   box-shadow: 0px 3px 50px #a5a5a5;
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
+  margin-right: 20px;
 }
 
 .card-top {
@@ -91,7 +94,6 @@ body {
   flex-direction: column;
   position: relative;
 }
-
 .card-header {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -99,10 +101,11 @@ body {
   height: 30px;
   padding: 1px 1px !important;
   text-align: center;
+  height: 30px;
 }
 
 .task-container {
-  height: 600px;
+  /* height: 600px; */
   width: 100%;
   display: flex;
   flex-wrap: wrap;

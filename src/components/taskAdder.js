@@ -47,9 +47,7 @@ const TaskAdder = () => {
       </div>
       <div className="task-container">
         {taskList &&
-          taskList.map((obj, index) => (
-            <Card taskObj={{ obj }} index={index} />
-          ))}
+          taskList.map((obj, index) => <Card taskObj={obj} index={index} />)}
       </div>
       <CreateTask toggle={toggle} modal={modal} save={saveTask} />
     </>
