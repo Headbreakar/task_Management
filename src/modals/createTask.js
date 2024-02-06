@@ -14,6 +14,25 @@ const CreateTask = ({ modal, toggle, save }) => {
     }
   };
 
+  const buttonStyle = {
+    display: "flex",
+    alignItems: "flex-start",
+    justifyContent: "center",
+    alignSelf: "flex-start",
+    fontFamily: "inherit",
+    color: "#717171",
+    fontWeight: 600,
+    width: "40%",
+    background: "#313131",
+    border: "1px solid #414141",
+    padding: "12px 16px",
+    fontSize: "inherit",
+    gap: "8px",
+    marginTop: "8px",
+    cursor: "pointer",
+    borderRadius: "6px",
+  };
+
   const handleSave = () => {
     let taskObj = {};
     taskObj["Name"] = taskName;
@@ -22,23 +41,24 @@ const CreateTask = ({ modal, toggle, save }) => {
   };
   return (
     <Modal isOpen={modal} toggle={toggle}>
-      <ModalHeader toggle={toggle}>Create Task</ModalHeader>
-      <ModalBody>
-        <form>
-          <div className="form-group">
-            <label>Task Name</label>
+      <ModalHeader className="text-light border-0" toggle={toggle}>
+        Create Task
+      </ModalHeader>
+      <ModalBody className="form-container">
+        <form class="form">
+          <div class="form-group">
+            <label>Task</label>
             <input
               type="text"
-              placeholder="hello"
+              placeholder="Enter your Task"
               className="form-control"
               value={taskName}
               onChange={useHandleChange}
               name="taskName"
             />
           </div>
-          <div className="form-group my-2">
-            <label>Description</label>
-
+          <div class="form-group">
+            <label for="textarea">Task Description</label>
             <textarea
               className="form-control"
               rows="5"
@@ -50,11 +70,16 @@ const CreateTask = ({ modal, toggle, save }) => {
           </div>
         </form>
       </ModalBody>
-      <ModalFooter>
-        <Button color="primary" onClick={handleSave}>
+      <ModalFooter className="border-0">
+        <Button
+          color="primary"
+          className="form-submit-btn"
+          onClick={handleSave}
+          style={buttonStyle}
+        >
           Save Task
         </Button>{" "}
-        <Button color="secondary" onClick={toggle}>
+        <Button color="secondary" onClick={toggle} style={buttonStyle}>
           Cancel
         </Button>
       </ModalFooter>
