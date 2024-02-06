@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import EditTask from "../modals/TaskEdit";
 
-const card = ({ taskObj, index, deleteTask }) => {
+const Card = ({ taskObj, index, deleteTask, updateListArray }) => {
+  const [modal, setModal] = useState(false);
+
+  const toggle = () => {
+    setModal(!modal);
+  };
+
+  const updateTask = (obj) => {
+    updateListArray(obj, index);
+  };
   const colors = [
     {
       primaryColor: "#5D93E1",
@@ -51,6 +61,9 @@ const card = ({ taskObj, index, deleteTask }) => {
           <i
             className="far fa-edit"
             style={{ color: colors[index % 5].primaryColor, cursor: "pointer" }}
+            onClick={() => {
+              setModal(true);
+            }}
           ></i>
           <i
             className="far fa-trash-alt mx-2"
@@ -59,8 +72,14 @@ const card = ({ taskObj, index, deleteTask }) => {
           ></i>
         </div>
       </div>
+      <EditTask
+        modal={modal}
+        toggle={toggle}
+        update={updateTask}
+        taskObj={taskObj}
+      />
     </div>
   );
 };
 
-export default card;
+export default Card;

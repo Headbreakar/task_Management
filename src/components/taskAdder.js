@@ -32,6 +32,14 @@ const TaskAdder = () => {
     window.location.reload();
   };
 
+  const updateListArray = (obj, index) => {
+    let tempList = taskList;
+    tempList[index] = obj;
+    localStorage.setItem("taskList", JSON.stringify(tempList));
+    setTaskList(tempList);
+    window.location.reload();
+  };
+
   return (
     <>
       <div className="header text-center">
@@ -43,6 +51,7 @@ const TaskAdder = () => {
               viewBox="0 0 24 24"
               width="24"
               height="24"
+              className="mb-1"
             >
               <path fill="none" d="M0 0h24v24H0z"></path>
               <path
@@ -57,7 +66,12 @@ const TaskAdder = () => {
       <div className="task-container">
         {taskList &&
           taskList.map((obj, index) => (
-            <Card taskObj={obj} index={index} deleteTask={deleteTask} />
+            <Card
+              taskObj={obj}
+              index={index}
+              deleteTask={deleteTask}
+              updateListArray={updateListArray}
+            />
           ))}
       </div>
       <CreateTask toggle={toggle} modal={modal} save={saveTask} />
