@@ -43,7 +43,7 @@ const TaskAdder = () => {
   return (
     <>
       <div className="header text-center">
-        <h3>Manage your Tasks Effieciently</h3>
+        <h3>Manage your Tasks Efficiently</h3>
         <button className="btns mt-2" onClick={() => setModal(true)}>
           <span>
             <svg
