@@ -23,6 +23,15 @@ const TaskAdder = () => {
     setTaskList(tempList);
     setModal(false);
   };
+
+  const deleteTask = (index) => {
+    let tempList = taskList;
+    tempList.splice(index, 1);
+    localStorage.setItem("taskList", JSON.stringify(tempList));
+    setTaskList(tempList);
+    window.location.reload();
+  };
+
   return (
     <>
       <div className="header text-center">
@@ -47,7 +56,9 @@ const TaskAdder = () => {
       </div>
       <div className="task-container">
         {taskList &&
-          taskList.map((obj, index) => <Card taskObj={obj} index={index} />)}
+          taskList.map((obj, index) => (
+            <Card taskObj={obj} index={index} deleteTask={deleteTask} />
+          ))}
       </div>
       <CreateTask toggle={toggle} modal={modal} save={saveTask} />
     </>
